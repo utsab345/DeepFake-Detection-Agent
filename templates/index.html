@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepfake Detection Agent System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+</head>
+<body>
+    <!-- Background gradient -->
+    <div class="gradient-bg"></div>
+    
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-icon">🤖</span>
+                <h1>Deepfake Detection AI</h1>
+            </div>
+            <div class="status-indicator">
+                <span class="status-dot" id="statusDot"></span>
+                <span id="statusText">Connecting...</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero">
+                <h2 class="hero-title">Detect AI-Generated Images with Intelligence</h2>
+                <p class="hero-subtitle">Multi-agent system powered by Vision Transformers and Google Gemini</p>
+            </section>
+
+            <!-- Content Grid -->
+            <div class="content-grid">
+                <!-- Upload Section -->
+                <section class="card upload-card">
+                    <h3 class="card-title">
+                        <span class="icon">📸</span>
+                        Upload Image
+                    </h3>
+                    
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-content">
+                            <div class="upload-icon">⬆️</div>
+                            <p class="upload-text">Drag & drop an image here</p>
+                            <p class="upload-subtext">or click to browse</p>
+                            <input type="file" id="fileInput" accept="image/*" hidden>
+                        </div>
+                        <div class="image-preview" id="imagePreview" style="display: none;">
+                            <img id="previewImg" src="" alt="Preview">
+                            <button class="btn-remove" id="removeBtn">✕</button>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-primary" id="analyzeBtn" disabled>
+                        <span class="btn-icon">🔍</span>
+                        Analyze Image
+                    </button>
+                </section>
+
+                <!-- Chat Section -->
+                <section class="card chat-card">
+                    <h3 class="card-title">
+                        <span class="icon">💬</span>
+                        Chat with Agent
+                    </h3>
+                    
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="welcome-message">
+                            <p>👋 Welcome! Upload an image to start detection.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-input-container">
+                        <input 
+                            type="text" 
+                            class="chat-input" 
+                            id="chatInput" 
+                            placeholder="Ask a question about the results..."
+                            disabled
+                        >
+                        <button class="btn-send" id="sendBtn" disabled>
+                            <span>➤</span>
+                        </button>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Results Section -->
+            <section class="card results-card" id="resultsCard" style="display: none;">
+                <h3 class="card-title">
+                    <span class="icon">📊</span>
+                    Detection Results
+                </h3>
+                
+                <div class="results-content">
+                    <!-- Prediction -->
+                    <div class="result-prediction">
+                        <div class="prediction-label" id="predictionLabel">-</div>
+                        <div class="prediction-confidence">
+                            <span>Confidence:</span>
+                            <span id="confidenceValue">0%</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Confidence Meter -->
+                    <div class="confidence-meter">
+                        <div class="meter-bar">
+                            <div class="meter-fill" id="meterFill" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Detailed Scores -->
+                    <div class="detailed-scores" id="detailedScores"></div>
+                    
+                    <!-- Explanation -->
+                    <div class="explanation-section" id="explanationSection" style="display: none;">
+                        <h4>🧠 AI Analysis</h4>
+                        <div class="explanation-text" id="explanationText"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Agent Status -->
+            <section class="agent-status" id="agentStatus" style="display: none;">
+                <div class="status-item">
+                    <div class="status-spinner"></div>
+                    <span id="agentStatusText">Processing...</span>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Built for Kaggle Agents Intensive Capstone Project | Track: Agents for Good</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
