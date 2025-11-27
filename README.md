@@ -45,6 +45,8 @@ graph TD
     style E fill:#FF9800
     style F fill:#9C27B0
 ```
+## 📷 Project Demo
+<img width="1888" height="993" alt="image" src="https://github.com/user-attachments/assets/26f1bbae-8780-4a6a-b9c6-9ee617a93e8f" />
 
 ## 📁 Project Structure
 
